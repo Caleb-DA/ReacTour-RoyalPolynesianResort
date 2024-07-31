@@ -1,0 +1,172 @@
+<html>
+
+<head>
+  <title>ReactTour-RoyalPolynesianResort</title>
+  <script src="https://fb.me/react-15.1.0.js"></script>
+  <script src="https://fb.me/react-dom-15.1.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
+  <style>
+  body {
+background-color: #E6E6FA;
+padding: 20px;
+margin: 0;
+}
+h1 {
+font-family: verdana;
+font-size: 60px;
+color: #EE82EE;
+text-align: center;  
+}
+h2, p, ul, li {
+font-family: Helvetica, Arial, sans-serif;
+}
+ul.header li {
+display: inline;
+font-size: 30px;
+list-style-type: none;
+margin: 10;
+}
+ul.header {
+background-color: #111;
+bottom-padding: 0;
+}
+ul.header li a {
+color: #CD5C5C;
+font-weight: bold;
+text-decoration: none;
+padding: 25px;
+display: inline-block;
+}
+.content {
+background-color: #FFF;
+padding: 20px;
+}
+.content h2 {
+padding: 0;
+margin: 0;
+}
+.content li {
+margin-bottom: 10px;
+}
+.active {
+  background-color: #0099FF;
+}
+
+
+</style>
+</head>
+
+<body>
+
+  <div id="container">
+
+  </div>
+
+  <script type="text/babel">
+    var destination = document.querySelector("#container");
+    var {Router, Route, IndexRoute, IndexLink, Link}= ReactRouter;
+    var Home= React.createClass({
+      render(){
+        return(
+          <div>
+            <h2>Hello friends, welcome to Royal Polynesian Resort</h2>
+            <p>We are located in the South Pacific paradise.</p>
+            <p>Amidst fabulous scenery, your vacation fantasy is about come true</p>
+            <img src={"https://lh6.googleusercontent.com/-j3ESA6twMew/VO4DYVTWfXI/AAAAAAAACRg/QxZFEscNWTE/s1600/tropical-paradise-beach-hd-desktop-wallpaper-high-definition.jpg"}/>	
+          </div>			
+          					
+          
+        )
+      }
+    });
+    var Facilities = React.createClass({
+      render: function() {
+          return (
+            <div>
+              <h2>Plenty of options to relax</h2>
+              <p>The easiest thing to enjoy is explore many on-site activities, include yoga classes.</p>
+            <img src={"https://www.maasaimarakenyapark.com/wp-content/uploads/2021/10/about-banner.jpg"}/>
+            </div>
+          );
+        }
+    });
+    var Contact = React.createClass({
+      render: function() {
+          return (
+            <div>
+              <h2>GOT QUESTIONS?</h2>
+              <p>The easiest thing to do is to contact our reservation desk</p>
+              <img src={"https://www.transitionsib.com/wp-content/uploads/2019/08/booking-0nline-travel-tib.jpg"}/>
+              </div>
+          );
+        }
+    });
+    var Food = React.createClass({
+      render: function() {
+          return (
+            <div>
+              <h2>Food</h2>
+              <p>Gourmet Chefs will guarantee to please your pallete</p>
+              <ol>
+              <li>Breakfast and Lunch are included everyday</li>  
+              <li>Plus All you can eat Dinner buffet</li>
+              </ol>
+             <img src={"https://i.ytimg.com/vi/lKnpLlCri-M/maxresdefault.jpg"}/>	
+            </div>
+          );
+        }
+    });
+    var Entertainment = React.createClass({
+      render: function() {
+          return (
+            <div>
+              <h2>Entertainment</h2>
+              <p>Top Notch shows to entertain our guests</p>
+              <ol>
+                <li>Karoke dancing party</li>
+                <li>Hula dancing girls performance</li>
+              </ol>
+              <img src={"https://e0.pxfuel.com/wallpapers/516/696/desktop-wallpaper-hula-dancers-activity-dancer-girl.jpg"}/>
+              </div>
+          );
+        }
+    });
+    var App= React.createClass({
+      render(){
+        return(
+          <div>
+            <h1>Royal Polynesian Resort</h1>
+            <ul className="header">
+          <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+          <li><Link to="/food" activeClassName="active">Food</Link></li>
+          <li><Link to="/entertainment" activeClassName="active">Entertainment</Link></li>
+          <li><Link to="/facilities" activeClassName="active">Facilities</Link></li>
+          <li><Link to="/contact" activeClassName="active">Contact</Link></li>
+          
+          
+        </ul>
+            <div className="content">
+              {this.props.children}
+            </div>
+          </div>
+        )
+      }
+    });
+    ReactDOM.render(
+    <Router>
+      <Route path="/" component={App}>
+        <IndexRoute  component={Home}/>
+        <Route path="/food" component={Food}/>
+        <Route path="/entertainment" component={Entertainment}/>
+        <Route path="/facilities" component={Facilities}/>
+        <Route path="/contact" component={Contact}/>
+      </Route>
+    </Router>
+      ,
+      destination
+    );
+  </script>
+</body>
+
+</html>
